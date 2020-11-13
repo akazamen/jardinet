@@ -1,0 +1,27 @@
+Linux setup
+
+1) install dotnet
+https://dotnet.microsoft.com/download/dotnet-core/thank-you/sdk-3.1.110-linux-arm64-binaries
+https://download.visualstudio.microsoft.com/download/pr/af40aa01-90f9-47cb-8ed6-a186de459e6c/0cb13fba48e467e7788b1ccad83a5358/dotnet-sdk-3.1.110-linux-arm64.tar.gz
+
+2) mkdir -p "$HOME/dotnet" && tar zxf dotnet-sdk-3.1.110-linux-arm64.tar.gz -C "$HOME/dotnet"
+export DOTNET_ROOT=$HOME/dotnet
+export PATH=$PATH:$HOME/dotnet
+
+Add these 2 last exports to the ~/.bashrc file.
+
+3) Package the app in the dev machine like this (From the Package Manager Console)
+dotnet publish -c Release -r linux-arm64 --self-contained true
+
+Transfer the resulting Jardinet\bin\Release\netcoreapp3.1\linux-arm64\publish\ folder to the linux machine.
+
+4) In the local machine, call
+dotnet Jardinet.dll
+
+5) Enable open trafic in iptables for 5000 and 5001 (backup if you wish with :  iptables-save > IPtablesbackup.txt)
+iptables -A INPUT -p tcp --dport 5000 -j ACCEPT
+iptables -A INPUT -p tcp --dport 5001 -j ACCEPT
+...or simply delete all...
+iptables -F
+iptables -P INPUT ACCEPT
+
