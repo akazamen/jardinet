@@ -1,1 +1,3 @@
 # jardinet
+
+FOR A WORLD WHERE MONEY DOES NOT RULE
