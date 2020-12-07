@@ -29,5 +29,6 @@ iptables -P INPUT ACCEPT
 Perform the deploy from Windows (C# Visual Studio) to Linux
 1) Run DevDeploy\deployToLinux.cmd
 2) In the linux machine, run:     perl deploy.pl
-4) Run using:                     sh runapp.sh
-These 2 steps will make sure that the app in port 3330 (http only) 
+3) Run using:                     sh runapp.sh
+After these steps the app will be run in port 3330 (http only) 
+Test it with http://<ip_of_the_linux_machine>:3330/api/hello
